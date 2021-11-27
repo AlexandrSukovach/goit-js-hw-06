@@ -14,21 +14,12 @@ const images = [
 ];
 
 const navEl = document.querySelector('.gallery');
-const navitenEl = document.createElement('li');
-navitenEl.classList.add('gallery__images');
-navEl.appendChild(navitenEl);
+const styleBody = document.querySelector('body');
 
+const galleryAnimal = images.map(({ url, alt }) => `<li class="gallery-item"><img src="${url}" alt="${alt}" width = 340 height = 220></li>`)
+  .join("");
 
-const elementsNavEl = images.map(element => {
-  const ewElementsNavEl = document.createElement('img')
-  ewElementsNavEl.src = element.url;
-  ewElementsNavEl.alt = element.alt;
-  return ewElementsNavEl
-
-})
-
-
-
-
-
-navEl.append(...elementsNavEl)
+navEl.insertAdjacentHTML("beforeend", galleryAnimal);
+navEl.insertAdjacentHTML("beforebegin", "<h2>gallery animal</h2>");
+styleBody.setAttribute("style", "text-align: center;");
+navEl.setAttribute("style", "list-style-type:none; display: flex; justify-content: space-evenly;");
